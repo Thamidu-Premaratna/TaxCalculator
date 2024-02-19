@@ -3,6 +3,7 @@ package com.project.taxcalculator.model;
 public class User {
 
     // Private attributes for the User model class
+    private int id;
     private String firstname;
     private String lastname;
     private String username;
@@ -11,13 +12,11 @@ public class User {
 
     // Constructor and Getters and Setters
 
-    public User(String firstname, String lastname, String username, String password, String email) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.username = username;
-        this.password = password;
-        this.email = email;
+    public User() {
     }
+
+    public int getId() {return id;}
+    public void setId(int id) {this.id = id;}
 
     public String getFirstname() {
         return firstname;

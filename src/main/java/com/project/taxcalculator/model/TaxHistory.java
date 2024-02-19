@@ -6,11 +6,8 @@ public class TaxHistory {
     private Double epf;
     private Double  etf;
 
-    public TaxHistory(Double grosssalary, Double taxvalue, Double epf, Double etf) {
-        this.grosssalary = grosssalary;
-        this.taxvalue = taxvalue;
-        this.epf = epf;
-        this.etf = etf;
+    public TaxHistory() {
+
     }
 
     public Double getGrosssalary() {
