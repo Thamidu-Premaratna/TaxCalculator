@@ -5,8 +5,8 @@ import java.io.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "TaxCalculationControllerServlet", value = "/tax-calculation-servlet")
-public class TaxCalculationController extends HttpServlet {
+@WebServlet(name = "UserControllerServlet", value = "/UserController-servlet")
+public class UserController extends HttpServlet {
     private String message;
 
     public void init() {
