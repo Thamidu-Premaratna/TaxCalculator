@@ -123,5 +123,9 @@
     </div>
 </div>
 
+<div class="text-center mt-4">
+    <a class="text-center" href="login.jsp">If you have user account</a>
+</div>
+
 </body>
 </html>
