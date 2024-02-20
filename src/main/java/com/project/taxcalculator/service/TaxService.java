@@ -24,7 +24,7 @@ public class TaxService {
         // SALARY_BRACKETS[0] is the relief salary,
         // so we reduce this amount from whatever the users basic salary is to
         // get the extra salary amount to which we need to apply taxes to
-        
+
         if(this.basicSalary > SALARY_BRACKETS[0]){
             double remainingSalary = this.basicSalary - SALARY_BRACKETS[0];
 
