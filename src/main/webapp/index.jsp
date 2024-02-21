@@ -1,17 +1,3 @@
-<%--<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JSP - Hello World</title>
-</head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>--%>
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +9,7 @@
 
 <nav class="navbar bg-body-tertiary mt-3 mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="home.jsp">
             <img src="19198919.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
             Tax Calculator Web Application
         </a>
