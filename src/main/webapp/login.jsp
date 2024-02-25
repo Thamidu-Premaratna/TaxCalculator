@@ -33,6 +33,10 @@
         .card {
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for better readability */
         }
+        .card-footer {
+            color: #fff;
+        }
+
     </style>
 </head>
 <body>

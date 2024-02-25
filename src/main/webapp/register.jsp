@@ -27,8 +27,14 @@
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for better readability */
         }
 
+        .card-footer {
+            color: #fff; /* Set text color to white */
+            text-decoration: none;
+        }
+
         .card-footer a {
-            color: #fff;
+            color: #fff; /* Set link color to white */
+            text-decoration: none;
         }
     </style>
 </head>
@@ -73,7 +79,6 @@
         </div>
     </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
