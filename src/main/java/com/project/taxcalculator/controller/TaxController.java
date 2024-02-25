@@ -58,6 +58,7 @@ public class TaxController extends HttpServlet {
 
         // Get the Tax brackets as a List in order to show them in a tabular format in view dynamically
         List<TaxBracket> taxBrackets = new ArrayList<>();
+        taxBrackets = taxService.getTaxBracketList();
 
         // Setting inital values for the epf and etf
         double employeeEpf = 0.0;
