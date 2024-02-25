@@ -2,6 +2,7 @@ package com.project.taxcalculator.controller;
 
 import java.io.*;
 
+import com.project.taxcalculator.dao.UserDao;
 import com.project.taxcalculator.model.User;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -49,8 +50,9 @@ public class UserController extends HttpServlet {
         String rootPath = context.getRealPath("/");
 
         // Instantiate the class that handles the data access
-        LoginDao loginDao = new LoginDao(rootPath, login);
+        UserDao loginDao = new UserDao(rootPath, user);
 
+//----------------------must edit----------------------
         //Check if the login is successful and get the role of the user
         String msg = loginDao.getLogin();
         if(msg.equals("ok")) {
@@ -65,7 +67,7 @@ public class UserController extends HttpServlet {
     } catch (JAXBException e) {
         e.printStackTrace();
     }
-
+//----------------------
 }
 
     public void destroy() {

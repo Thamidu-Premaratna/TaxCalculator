@@ -9,11 +9,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDao {
+    private final String filePath;
     private Connection connection = null;
 
     public UserDao(Connection connection) {
         this.connection = DatabaseConnection.getConnection();
     }
+
+    public UserDao(String rootPath, User user) {
+        // relative path of the xml file
+        String relativePath = "";
+        this.filePath = rootPath + relativePath;
+        this.user = user;
+    }
+
     public User getUserById(int id) {
         User user = null;
         try {
