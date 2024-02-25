@@ -26,9 +26,9 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        //Create new Login object to store the parameters
+        //Create new User object to store the parameters
         User user = new User();
-        login.setUsername(username);
+        User.setUsername(username);
         login.setPassword(password);
 
         //Setting the role of the user
