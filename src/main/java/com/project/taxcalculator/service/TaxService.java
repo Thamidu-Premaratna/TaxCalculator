@@ -5,56 +5,118 @@ import com.project.taxcalculator.model.TaxBracket;
 import java.util.ArrayList;
 import java.util.List;
 
-// Logic implementation
 public class TaxService {
 
+    // Define tax brackets and rates
+    private final double[][] brackets = {
+            {100000.0, 0.0},
+            {141667.0, 0.06},
+            {183333.0, 0.12},
+            {225000.0, 0.18},
+            {266667.0, 0.24},
+            {308334.0, 0.30},
+            {Double.MAX_VALUE, 0.36}
+    };
     private double basicSalary;
-    private double taxTotalValue;
-    private List<TaxBracket> taxBrackets = null;
-    private final double[] SALARY_BRACKETS = {100000, 141667, 183333, 225000, 266667, 308333};
-    private final double[] TAX_RATES = {0, 0.06, 0.12, 0.18, 0.24, 0.30, 0.36};
+    private List<TaxBracket> taxBrackets;
 
-    public TaxService(double basicSalary){
+    public TaxService(double basicSalary) {
         this.basicSalary = basicSalary;
+        // Initialize the tax brackets
+        initTaxBrackets();
     }
 
-    public List<TaxBracket> getTaxBrackets(){
-
+    // Get the tax brackets for the respective salary range
+    public void initTaxBrackets() {
         taxBrackets = new ArrayList<>();
-        // SALARY_BRACKETS[0] is the relief salary,
-        // so we reduce this amount from whatever the users basic salary is to
-        // get the extra salary amount to which we need to apply taxes to
+        double remaining = basicSalary - 100000.0; // Relief salary
 
-        if(this.basicSalary > SALARY_BRACKETS[0]){
-            double remainingSalary = this.basicSalary - SALARY_BRACKETS[0];
+        if (remaining > 0) {
+            // Add the first tax bracket
+            taxBrackets.add(new TaxBracket(
+                    "Up to Rs. 100000", 0.0, 0.0
+            ));
+            // Calculate the number of possible divisions by 41667 and the remainder
+            int divisions = (int) (remaining / 41667);
+            double remainder = remaining % 41667;
 
-            for (int i = 0; i < SALARY_BRACKETS.length; i++) {
-                double bracketSalary = Math.min(remainingSalary, SALARY_BRACKETS[i]);
-                double tax = bracketSalary * TAX_RATES[i];
-
-                // Create a new tax bracket instance to store the respective tax bracket details
-                TaxBracket taxBracket = new TaxBracket();
-                taxBracket.setBracketSalaryRange(bracketSalary);
-                taxBracket.setTaxRate(TAX_RATES[i]);
-                taxBracket.setTax(tax);
-
-                // Add the tax bracket to the tax bracket Array list
-                taxBrackets.add(taxBracket);
-                remainingSalary -= bracketSalary;
+            // If divisions are more than 6, add the excess to the remainder
+            if (divisions > 5) {
+                int excessDivisions = divisions - 5;
+                remainder += excessDivisions * 41667;
+                divisions = 5;
             }
 
-            if (remainingSalary > 0) {
-                double tax = remainingSalary * TAX_RATES[TAX_RATES.length - 1];
-                TaxBracket taxBracket = new TaxBracket();
-                taxBracket.setBracketSalaryRange(remainingSalary);
-                taxBracket.setTaxRate(TAX_RATES[TAX_RATES.length - 1]);
-                taxBracket.setTax(tax);
-                taxBrackets.add(taxBracket);
+            // Calculate the tax for each bracket
+            for (int i = 0; i < divisions; i++) {
+                double upperLimit = 100000.0 + (i + 1) * 41667;
+                double taxRate = brackets[i+1][1];
+
+                // Calculate the tax for the bracket (Round to the nearest integer)
+                double taxAmount = 41667 * taxRate;
+                double tax = Math.floor(taxAmount + 0.5);
+
+                taxBrackets.add(new TaxBracket(
+                        formatBracketRange(upperLimit), taxRate, tax
+                ));
             }
-        }else{
-           taxBrackets = null;
+            // Calculate the tax for the remainder
+            if (remainder > 0) {
+                double upperLimit = 100000.0 + (divisions + 1) * 41667;
+                double taxRate = brackets[divisions+1][1];
+
+                // Calculate the tax for the bracket (Round to the nearest integer)
+                double taxAmount = remainder * taxRate;
+                double tax = Math.floor(taxAmount + 0.5);
+
+                taxBrackets.add(new TaxBracket(
+                        formatBracketRange(upperLimit), taxRate, tax
+                ));
+            }
+        }else {
+            // The salary is less than 100000
+            taxBrackets.add(new TaxBracket(
+                    "Up to 100000", 0.0, 0.0
+            ));
         }
+    }
 
+    // Get the tax brackets ArrayList
+    public List<TaxBracket> getTaxBracketList() {
         return taxBrackets;
+    }
+
+    // Get the total tax value
+    public double getTotalTax() {
+        double totalTax = 0.0;
+        for (TaxBracket bracket : taxBrackets) {
+            totalTax += bracket.getTax();
+        }
+        return totalTax;
+    }
+
+    // Get the take home salary
+    public double getTakeHomeSalary() {
+        return basicSalary - getTotalTax();
+    }
+
+    // Print the tax brackets and total tax
+    public void printTaxBrackets() {
+        System.out.println("Basic Salary: " + basicSalary);
+        System.out.println("Tax Brackets:");
+        for (TaxBracket bracket : taxBrackets) {
+            System.out.println(bracket.getBracketSalaryRange() + " - Tax rate : " + bracket.getTaxRate() + " - Tax value :  " + bracket.getTax());
+        }
+        System.out.println("Total Tax: " + getTotalTax());
+        System.out.println("Take home salary: " + getTakeHomeSalary());
+    }
+
+    // Format the bracket range string
+    private String formatBracketRange(double upperLimit) {
+        if (upperLimit > 308335.0) {
+            return "Above Rs. 308334";
+        }
+        return "Next Rs. 41667 till " + (int) upperLimit;
+
     }
 }

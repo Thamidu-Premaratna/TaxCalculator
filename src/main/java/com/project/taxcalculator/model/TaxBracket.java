@@ -1,18 +1,21 @@
 package com.project.taxcalculator.model;
 
 public class TaxBracket {
-    private double bracketSalaryRange;
+    private String bracketSalaryRange;
     private double taxRate;
     private double tax;
 
-    public TaxBracket() {
+    public TaxBracket(String bracketSalaryRange, double taxRate, double tax) {
+        this.bracketSalaryRange = bracketSalaryRange;
+        this.taxRate = taxRate;
+        this.tax = tax;
     }
 
-    public double getBracketSalaryRange() {
+    public String getBracketSalaryRange() {
         return bracketSalaryRange;
     }
 
-    public void setBracketSalaryRange(double bracketSalaryRange) {
+    public void setBracketSalaryRange(String bracketSalaryRange) {
         this.bracketSalaryRange = bracketSalaryRange;
     }
 
