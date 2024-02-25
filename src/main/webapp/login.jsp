@@ -11,6 +11,36 @@
 
     <title>Login to Tax Calculator Web Service</title>
     <link rel="stylesheet" type="text/css" href="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-image: url('bg.jpg'); /* Update with the path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Ensure background stays fixed while scrolling */
+            color: #fff; /* Set text color to white */
+        }
+
+        .container {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for better readability */
+        }
+
+        .card-footer {
+            color: #fff; /* Set text color to white */
+            text-decoration: none;
+        }
+
+        .card-footer a {
+            color: #fff; /* Set link color to white */
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 
