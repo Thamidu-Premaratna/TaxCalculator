@@ -18,7 +18,7 @@ public class DatabaseConnection {
     // Return new connection or return existing database connection
     public static Connection getConnection() {
         try{
-            if( connection != null){
+            if(connection != null){
                 return connection;
             }else{
                 connection = DriverManager.getConnection(URL);
