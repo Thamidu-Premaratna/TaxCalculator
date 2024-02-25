@@ -119,4 +119,44 @@ public class TaxService {
         return "Next Rs. 41667 till " + (int) upperLimit;
 
     }
+
+    // Epf and Etf calculation
+    // Define EPF and ETF contribution rates
+    private final double employeeEPF = 0.08;
+    private final double employerEPF = 0.12;
+    private final double employerETF = 0.03;
+
+    double employeeEPFContribution = 0.0;
+    double employerEPFContribution = 0.0;
+    double employerETFContribution = 0.0;
+
+    public void calculateEPFandETF() {
+        double totalEPF = 0.0;
+        double totalETF = 0.0;
+
+        // Calculate employee EPF contribution
+        employeeEPFContribution = this.basicSalary * employeeEPF;
+        totalEPF += employeeEPFContribution;
+
+        // Calculate employer EPF contribution
+        employerEPFContribution = this.basicSalary * employerEPF;
+        totalEPF += employerEPFContribution;
+
+        // Calculate employer ETF contribution
+        employerETFContribution = this.basicSalary * employerETF;
+        totalETF += employerETFContribution;
+    }
+
+    public double getEmployeeEPFContribution() {
+        return employeeEPFContribution;
+    }
+
+    public double getEmployerEPFContribution() {
+        return employerEPFContribution;
+    }
+
+    public double getEmployerETFContribution() {
+        return employerETFContribution;
+    }
+
 }
