@@ -10,70 +10,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-
-    <title>Login</title>
+    <%--    meta tags --%>
+    <meta name="description"
+          content="Employee management system version 1.0"/>
+    <meta charset="utf-8"/>
+    <title>Login | EMS</title>
+    <%--    Bootstrap.css link --%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+          integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
-<body>
-<h1 class="text-center mt-5 mb-4">Bootstrap Login page</h1>
-<form class="container" style="width: 23rem">
-    <!-- input fields -->
-    <label>Username
-    <input
-            type="text"
-            name="username"
-            placeholder="Enter your username"
-            class="form-control mb-4"
-    />
-    </label>
 
-    <label>Password
-    <input
-            type="password"
-            placeholder="Type password"
-            class="form-control mb-4"
-    />
-    </label>
+<body class="bg-black">
+<%-- Creating a container for the page --%>
 
-    <!-- check box and forgot password -->
-    <div class="row text-center">
-        <div class="col form-check">
-            <input type="checkbox" checked />
-            <label for="checkbox" id="checkbox">Remember me</label>
-        </div>
-        <div class="col"><a href="login.jsp">Forgot Password?</a></div>
-    </div>
-
-    <!-- sign in button -->
-    <button class="btn btn-primary w-100 mt-4">Sign in</button>
-
-    <!-- sign in with other services -->
-    <p class="text-center mt-4">Not a member? <a href="login.jsp">Register</a></p>
-    <p class="text-center">or sign up with:</p>
-    <div class="row text-center d-flex justify-content-center mt-3">
-        <div class="col-2">
-            <a href="login.jsp"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <div class="col-2">
-            <a href="login.jsp"><i class="fab fa-google"></i></a>
-        </div>
-        <div class="col-2">
-            <a href="login.jsp"><i class="fab fa-twitter"></i></a>
-        </div>
-        <div class="col-2">
-            <a href="login.jsp"><i class="fab fa-github"></i></a>
+<div class="container-fluid"
+     style="background-image: url(19198919.jpg); width: 100%; height: 100vh; background-repeat: no-repeat; background-size: cover;">
+    <div style="height:100vh;" class="row align-items-center">
+        <div class="col-6 col-lg-4 offset-3 offset-lg-4 rounded-2 p-3">
+            <h1 class="text-white text-center"><%="Sign-in"%>
+            </h1>
+            <%-- Get User inputs : Form --%>
+            <form class="row mt-3 needs-validation" action="${pageContext.request.contextPath}/" method="post">
+                <div class="col-12">
+                    <div class="form-floating mb-3">
+                        <input name="username" type="text" class="form-control" id="uname" placeholder="Username">
+                        <label for="uname">Username</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating mb-3">
+                        <input name="password" type="password" class="form-control" id="pwd" placeholder="Password">
+                        <label for="pwd">Password</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-success w-100" type="submit" value="Refresh">Login</button>
+                </div>
+            </form>
         </div>
     </div>
-</form>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"
+        integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

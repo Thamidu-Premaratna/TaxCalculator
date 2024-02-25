@@ -23,7 +23,7 @@
 
 <nav class="navbar bg-body-tertiary mt-3 mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="login.jsp">
             <img src="19198919.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
             Tax Calculator Web Application
         </a>

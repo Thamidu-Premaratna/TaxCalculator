@@ -1,18 +1,17 @@
 package com.project.taxcalculator.controller;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.project.taxcalculator.dao.UserDao;
+import com.project.taxcalculator.model.User;
 
 import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "LoginController", value = "/login-servlet")
+@WebServlet("/login")
 public class LoginController extends HttpServlet {
-
-    public void init() {
-    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Retrieve username and password from the request
@@ -20,42 +19,17 @@ public class LoginController extends HttpServlet {
         String password = request.getParameter("password");
 
         // Validate the user credentials using UserDao
-        UserDao userDao = new UserDao(DatabaseConnection.getConnection());
+        UserDao userDao = new UserDao();
         User user = userDao.getUserByUsernameAndPassword(username, password);
 
         if (user != null) {
             // If the user is valid, set a session attribute indicating successful login
             request.getSession().setAttribute("loggedInUser", user);
             // Redirect to some success page
-            response.sendRedirect("success.jsp");
+            response.sendRedirect("index.jsp");
         } else {
             // If the user is not valid, redirect back to the login page with an error message
             response.sendRedirect("login.jsp?error=invalid");
         }
     }
-
 }
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        super.doGet(request, response);
-//    }
-//
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        response.setContentType("text/html");
-//
-//        //Storing the parameters as variables
-//        String username = request.getParameter("username");
-//        String password = request.getParameter("password");
-//
-//        //Create new Login object to store the parameters
-//        User user = new User();
-//        login.setUsername(username);
-//        login.setPassword(password);
-//
-//        //Setting the role of the user
-//        if(username.equals("admin")) {
-//            login.setRole("admin");
-//        } else {
-//            login.setRole("user");
-//        }
-//}

@@ -9,25 +9,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDao {
-    private final String filePath;
-    private Connection connection = null;
+    private Connection connection;
 
-    public UserDao(Connection connection) {
+    public UserDao() {
         this.connection = DatabaseConnection.getConnection();
     }
 
-    public UserDao(String rootPath, User user) {
-        // relative path of the xml file
-        String relativePath = "";
-        this.filePath = rootPath + relativePath;
-        this.user = user;
-    }
-
-    public User getUserById(int id) {
+    public User getUserByUsernameAndPassword(String username, String password) {
         User user = null;
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
-            ps.setInt(1, id);
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
+            ps.setString(1, username);
+            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 user = new User();
@@ -37,6 +30,8 @@ public class UserDao {
                 user.setUsername(rs.getString("username"));
                 user.setEmail(rs.getString("email"));
             }
+            rs.close();
+            ps.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
