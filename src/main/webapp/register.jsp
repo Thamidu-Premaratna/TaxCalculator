@@ -21,8 +21,7 @@
 <body>
 <div class="signup-form">
     <form action="/examples/actions/confirmation.php" method="post">
-        <h2>Create Free Account</h2>
-        <p class="hint-text">It's FREE and takes a minute.</p>
+        <h2>Register here!</h2>
         <div class="form-group">
             <div class="row">
                 <div class="col-xs-6">
@@ -45,6 +44,12 @@
         <div class="form-group">
             <label>Password
                 <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            </label>
+        </div>
+        <label>
+        <div class="form-group">
+            <label>Confirm Password
+                <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
             </label>
         </div>
         <div class="form-group">

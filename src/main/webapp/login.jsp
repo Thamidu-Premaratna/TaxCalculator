@@ -32,7 +32,6 @@
             class="form-control mb-4"
     />
     </label>
-
     <label>Password
     <input
             type="password"
