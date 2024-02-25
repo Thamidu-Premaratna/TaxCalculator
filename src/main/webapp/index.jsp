@@ -23,20 +23,23 @@
                  class="d-inline-block align-text-top">
             Tax Calculator Web Application
         </a>
+        <div class="d-flex">
+            <a href="login.jsp" class="btn btn-custom">Sign In</a>
+            <a href="register.jsp" class="btn btn-custom">Sign Up</a>
+        </div>
     </div>
 </nav>
 
-<div class="container align-content-center">
-    <p>This is a web application for calculating your tax payment based on your income. Enjoy it!</p>
+<div class="container mt-5">
+    <div class="text-center">
+        <p style="color: white">This is a web application for calculating your tax payment based on your income. Enjoy it!</p>
+    </div>
 
-    <div class="card text-center text-bg-light p-3 " style="max-width: 600px;">
-
+    <<div class="card mx-auto" style="max-width: 600px;">
         <div class="card-header">
             <h5 class="card-title">Income Tax Calculator</h5>
         </div>
-
         <div class="card-body">
-
             <form class="row gy-2 gx-3 align-items-center" action="tax-servlet" method="GET">
                 <div class="col-auto">
                     <label for="InputSalary" class="form-label">Salary</label>
@@ -49,15 +52,10 @@
                            id="flexSwitchCheckChecked">
                     <label class="form-check-label " for="flexSwitchCheckChecked">enable EPF/ETF calculation</label>
                 </div>
-
-                <button type="submit" class="btn btn-primary mt-3">calculate</button>
-
+                <button type="submit" class="btn btn-primary">Calculate</button>
             </form>
         </div>
-
-
     </div>
-
     <p class="mt-4">Tax Brackets and Rates and EPF/ETF calculations</p>
     <p class="my-1 text-danger">${errorMessage}</p>
     <p class="my-1 text-success">${successMessage}</p>
@@ -126,9 +124,9 @@
             </tr>
             </tbody>
         </table>
-
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
