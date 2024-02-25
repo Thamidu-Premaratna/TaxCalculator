@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: USHARI EGODAWELE
-  Date: 2/19/2024
-  Time: 9:58 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -26,14 +19,14 @@
 <%-- Creating a container for the page --%>
 
 <div class="container-fluid"
-     style="background-image: url(19198919.jpg); width: 100%; height: 100vh; background-repeat: no-repeat; background-size: cover;">
+     style="background-image: url(bg.jpg); width: 100%; height: 100vh; background-repeat: no-repeat; background-size: cover;">
     <div style="height:100vh;" class="row align-items-center">
         <div class="col-6 col-lg-4 offset-3 offset-lg-4 rounded-2 p-3">
             <h1 class="text-white text-center"><%="Sign-in"%>
             </h1>
             <%-- Get User inputs : Form --%>
-            <form class="row mt-3 needs-validation" action="${pageContext.request.contextPath}/" method="post">
-                <div class="col-12">
+            <form class="row mt-3 needs-validation" action="${pageContext.request.contextPath}/login" method="post">
+            <div class="col-12">
                     <div class="form-floating mb-3">
                         <input name="username" type="text" class="form-control" id="uname" placeholder="Username">
                         <label for="uname">Username</label>
