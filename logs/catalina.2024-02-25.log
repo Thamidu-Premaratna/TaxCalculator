@@ -1,0 +1,111 @@
+25-Feb-2024 16:06:51.398 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.13
+25-Feb-2024 16:06:51.403 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Aug 23 2023 21:34:59 UTC
+25-Feb-2024 16:06:51.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.13.0
+25-Feb-2024 16:06:51.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+25-Feb-2024 16:06:51.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+25-Feb-2024 16:06:51.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+25-Feb-2024 16:06:51.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             D:\JAVA
+25-Feb-2024 16:06:51.405 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           19.0.1+10-21
+25-Feb-2024 16:06:51.406 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+25-Feb-2024 16:06:51.406 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator
+25-Feb-2024 16:06:51.406 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Program Files\apache-tomcat-10.1.13
+25-Feb-2024 16:06:51.417 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+25-Feb-2024 16:06:51.417 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+25-Feb-2024 16:06:51.418 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+25-Feb-2024 16:06:51.418 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+25-Feb-2024 16:06:51.418 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+25-Feb-2024 16:06:51.418 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Program Files\apache-tomcat-10.1.13
+25-Feb-2024 16:06:51.418 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator
+25-Feb-2024 16:06:51.418 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\temp
+25-Feb-2024 16:06:51.419 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\conf\logging.properties
+25-Feb-2024 16:06:51.419 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+25-Feb-2024 16:06:51.419 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:D:\academic applications\IntelliJ IDEA 2023.2.2\lib\idea_rt.jar=53217:D:\academic applications\IntelliJ IDEA 2023.2.2\bin
+25-Feb-2024 16:06:51.419 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+25-Feb-2024 16:06:51.419 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+25-Feb-2024 16:06:51.419 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+25-Feb-2024 16:06:51.491 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.5] using APR version [1.7.4].
+25-Feb-2024 16:06:51.531 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.10 1 Aug 2023]
+25-Feb-2024 16:06:51.973 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+25-Feb-2024 16:06:52.004 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [956] milliseconds
+25-Feb-2024 16:06:52.069 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+25-Feb-2024 16:06:52.070 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.13]
+25-Feb-2024 16:06:52.086 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\conf\Catalina\localhost\TaxCalculator.xml]
+25-Feb-2024 16:06:52.650 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+25-Feb-2024 16:06:52.799 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\conf\Catalina\localhost\TaxCalculator.xml] has finished in [712] ms
+25-Feb-2024 16:06:52.802 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+25-Feb-2024 16:06:52.901 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [896] milliseconds
+25-Feb-2024 16:30:47.105 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.13
+25-Feb-2024 16:30:47.111 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Aug 23 2023 21:34:59 UTC
+25-Feb-2024 16:30:47.111 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.13.0
+25-Feb-2024 16:30:47.111 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+25-Feb-2024 16:30:47.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+25-Feb-2024 16:30:47.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+25-Feb-2024 16:30:47.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             D:\JAVA
+25-Feb-2024 16:30:47.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           19.0.1+10-21
+25-Feb-2024 16:30:47.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+25-Feb-2024 16:30:47.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator
+25-Feb-2024 16:30:47.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Program Files\apache-tomcat-10.1.13
+25-Feb-2024 16:30:47.124 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+25-Feb-2024 16:30:47.124 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Program Files\apache-tomcat-10.1.13
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\temp
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\conf\logging.properties
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:D:\academic applications\IntelliJ IDEA 2023.2.2\lib\idea_rt.jar=54223:D:\academic applications\IntelliJ IDEA 2023.2.2\bin
+25-Feb-2024 16:30:47.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+25-Feb-2024 16:30:47.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+25-Feb-2024 16:30:47.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+25-Feb-2024 16:30:47.132 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.5] using APR version [1.7.4].
+25-Feb-2024 16:30:47.157 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.10 1 Aug 2023]
+25-Feb-2024 16:30:47.671 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+25-Feb-2024 16:30:47.700 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [883] milliseconds
+25-Feb-2024 16:30:47.781 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+25-Feb-2024 16:30:47.781 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.13]
+25-Feb-2024 16:30:47.800 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\conf\Catalina\localhost\TaxCalculator.xml]
+25-Feb-2024 16:30:48.256 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+25-Feb-2024 16:30:48.353 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\conf\Catalina\localhost\TaxCalculator.xml] has finished in [553] ms
+25-Feb-2024 16:30:48.358 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+25-Feb-2024 16:30:48.424 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [722] milliseconds
+25-Feb-2024 16:45:15.273 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.13
+25-Feb-2024 16:45:15.279 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Aug 23 2023 21:34:59 UTC
+25-Feb-2024 16:45:15.280 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.13.0
+25-Feb-2024 16:45:15.280 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+25-Feb-2024 16:45:15.280 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+25-Feb-2024 16:45:15.280 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+25-Feb-2024 16:45:15.280 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             D:\JAVA
+25-Feb-2024 16:45:15.281 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           19.0.1+10-21
+25-Feb-2024 16:45:15.281 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+25-Feb-2024 16:45:15.281 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator
+25-Feb-2024 16:45:15.281 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Program Files\apache-tomcat-10.1.13
+25-Feb-2024 16:45:15.295 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+25-Feb-2024 16:45:15.295 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+25-Feb-2024 16:45:15.296 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+25-Feb-2024 16:45:15.296 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+25-Feb-2024 16:45:15.296 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+25-Feb-2024 16:45:15.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Program Files\apache-tomcat-10.1.13
+25-Feb-2024 16:45:15.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator
+25-Feb-2024 16:45:15.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\temp
+25-Feb-2024 16:45:15.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\conf\logging.properties
+25-Feb-2024 16:45:15.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+25-Feb-2024 16:45:15.298 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:D:\academic applications\IntelliJ IDEA 2023.2.2\lib\idea_rt.jar=54772:D:\academic applications\IntelliJ IDEA 2023.2.2\bin
+25-Feb-2024 16:45:15.298 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+25-Feb-2024 16:45:15.298 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+25-Feb-2024 16:45:15.298 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+25-Feb-2024 16:45:15.306 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.5] using APR version [1.7.4].
+25-Feb-2024 16:45:15.333 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.10 1 Aug 2023]
+25-Feb-2024 16:45:15.878 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+25-Feb-2024 16:45:15.907 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [898] milliseconds
+25-Feb-2024 16:45:15.983 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+25-Feb-2024 16:45:15.983 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.13]
+25-Feb-2024 16:45:16.002 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\conf\Catalina\localhost\TaxCalculator.xml]
+25-Feb-2024 16:45:16.439 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+25-Feb-2024 16:45:16.544 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\USHARI EGODAWELE\Desktop\app\TaxCalculator\conf\Catalina\localhost\TaxCalculator.xml] has finished in [542] ms
+25-Feb-2024 16:45:16.550 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+25-Feb-2024 16:45:16.610 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [700] milliseconds
+25-Feb-2024 17:18:49.021 INFO [Catalina-utility-1] org.apache.catalina.users.MemoryUserDatabase.backgroundProcess Reloading memory user database [UserDatabase] from updated source [file:/C:/Users/USHARI%20EGODAWELE/Desktop/app/TaxCalculator/conf/tomcat-users.xml]
+25-Feb-2024 17:18:49.048 SEVERE [Catalina-utility-1] org.apache.catalina.users.MemoryUserDatabase.open The specified user database [conf/tomcat-users.xml] could not be found
+25-Feb-2024 17:18:49.611 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaxCalculator]
