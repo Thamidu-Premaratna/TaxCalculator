@@ -51,7 +51,7 @@
                 <div class="card-header">Login</div>
                 <div class="card-body">
                     <!-- Login form -->
-                    <form action="user-servlet" method="post">
+                    <form action="login-servlet" method="post">
                         <div class="mb-3">
                             <p class="text-danger">${errorMessage}</p>
                             <p class="text-success">${successMessage}</p>

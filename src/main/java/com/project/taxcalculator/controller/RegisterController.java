@@ -45,7 +45,14 @@ public class RegisterController extends HttpServlet {
 
             // Save the user to the database
             UserDao userDao = new UserDao();
-            userDao.createUser(user);
+            try {
+                userDao.createUser(user);
+            } catch (Exception e) {
+                errorMessage = "Error occurred while creating your account!\nPlease try again!";
+                request.setAttribute("errorMessage", errorMessage);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+                dispatcher.forward(request, response);
+            }
 
             // Redirect to a index page after registration
             response.sendRedirect("login.jsp");

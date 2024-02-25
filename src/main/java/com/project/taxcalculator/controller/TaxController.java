@@ -2,6 +2,7 @@ package com.project.taxcalculator.controller;
 
 import com.project.taxcalculator.dao.TaxHistoryDao;
 import com.project.taxcalculator.model.TaxBracket;
+import com.project.taxcalculator.model.User;
 import com.project.taxcalculator.service.TaxService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -36,6 +37,13 @@ public class TaxController extends HttpServlet {
         String successMessage = "";
 
         boolean isEpfEtf = false;
+
+        // Store the user id from the session if a user is logged in
+        User user = (User) request.getSession().getAttribute("loggedInUser");
+        int userId = 1; // Default user id is 1 (admin)
+        if(user != null){
+            userId = user.getId();
+        }
 
         // Get the basic salary input from the user
         double basicSalary = 0.0;
@@ -91,7 +99,7 @@ public class TaxController extends HttpServlet {
             //Using the DAO pattern, insert the tax brackets into the database
             TaxHistoryDao taxHistoryDao = new TaxHistoryDao();
             try{
-                if (taxHistoryDao.insertTaxBrackets(basicSalary, taxService.getTotalTax(), employeeEpf, employerEpf, employerEtf)) {
+                if (taxHistoryDao.insertTaxBrackets(userId, basicSalary, taxService.getTotalTax(), employeeEpf, employerEpf, employerEtf)) {
                     // If the insertion is successful show the success message to the user
                     successMessage = "Tax brackets inserted successfully!\n";
                     request.setAttribute("successMessage", successMessage);

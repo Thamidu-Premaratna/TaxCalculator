@@ -35,14 +35,24 @@ public class LoginController extends HttpServlet {
 
         // Check if username or password is empty
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
-            // If either field is empty, redirect back to the login page with an error message
-            response.sendRedirect("login.jsp?error=empty");
-            return;
+            errorMessage = "Please fill all the fields!";
+            request.setAttribute("errorMessage", errorMessage);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+            dispatcher.forward(request, response);
         }
 
         // Validate the user credentials using UserDao
         UserDao userDao = new UserDao();
-        User user = userDao.getUserByUsernameAndPassword(username, password);
+        User user = null;
+
+        try {
+            user = userDao.getUserByUsernameAndPassword(username, password);
+        } catch (Exception e) {
+            errorMessage = "Error occurred while validating user credentials!\nPlease try again!";
+            request.setAttribute("errorMessage", errorMessage);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+            dispatcher.forward(request, response);
+        }
 
         if (user != null) {
             // If the user is valid, set a session attribute indicating successful login

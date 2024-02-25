@@ -15,7 +15,7 @@ public class UserDao {
         this.connection = DatabaseConnection.getConnection();
     }
 
-    public User getUserById(int id) {
+    public User getUserById(int id) throws SQLException, Exception{
         User user = null;
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
@@ -32,12 +32,14 @@ public class UserDao {
             ps.close(); // Close PreparedStatement
             rs.close(); // Close ResultSet
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle this properly in your application
+            throw new SQLException("Error occurred while inserting tax brackets!" );
+        }catch (Exception e){
+            throw new Exception("Error occurred!");
         }
         return user;
     }
 
-    public User getUserByUsernameAndPassword(String username, String password) {
+    public User getUserByUsernameAndPassword(String username, String password) throws SQLException, Exception{
         User user = null;
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
@@ -55,12 +57,14 @@ public class UserDao {
             ps.close(); // Close PreparedStatement
             rs.close(); // Close ResultSet
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle this properly in your application
+            throw new SQLException("Error occurred while inserting tax brackets!" );
+        }catch (Exception e){
+            throw new Exception("Error occurred!");
         }
         return user;
     }
 
-    public void createUser(User user) {
+    public void createUser(User user) throws SQLException, Exception{
         try {
             PreparedStatement ps = connection.prepareStatement("INSERT INTO users (firstname, lastname, username, password, email) VALUES (?, ?, ?, ?, ?)");
             ps.setString(1, user.getFirstname());
@@ -72,7 +76,9 @@ public class UserDao {
             ps.executeUpdate();
             ps.close(); // Close PreparedStatement
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new SQLException("Error occurred while inserting tax brackets!" );
+        }catch (Exception e){
+            throw new Exception("Error occurred!");
         }
     }
 }
