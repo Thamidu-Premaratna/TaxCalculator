@@ -1,87 +1,110 @@
-<%--<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JSP - Hello World</title>
-</head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>--%>
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tax Calculator Web Service</title>
-</head>
-<body >
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-image: url('bg.jpg'); /* Update with the path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Ensure background stays fixed while scrolling */
+            color: #000000; /* Set text color to white */
+        }
 
-<nav class="navbar bg-body-tertiary mt-3 mb-3">
+        .navbar-brand img {
+            margin-right: 5px;
+        }
+
+        .container {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 4rem;
+        }
+
+        .btn-custom {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="login.jsp">
             <img src="19198919.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
             Tax Calculator Web Application
         </a>
+        <div class="d-flex">
+            <a href="login.jsp" class="btn btn-custom">Sign In</a>
+            <a href="register.jsp" class="btn btn-custom">Sign Up</a>
+        </div>
     </div>
 </nav>
 
-<div class="container align-content-center">
-    <p>This is a web application for calculating your tax payment based on your income. Enjoy it!</p>
+<div class="container mt-5">
+    <div class="text-center">
+        <p style="color: white">This is a web application for calculating your tax payment based on your income. Enjoy it!</p>
+    </div>
 
-    <div class="card text-center text-bg-light p-3 " style="max-width: 600px;">
-
+    <<div class="card mx-auto" style="max-width: 600px;">
         <div class="card-header">
             <h5 class="card-title">Income Tax Calculator</h5>
         </div>
-
         <div class="card-body">
-
-            <form class="row gy-2 gx-3 align-items-center" action="hello-servlet" method="GET">
-                <div class="col-auto">
-                    <label for="InputSalary" class="form-label">Salary</label>
-                    <input type="number" class="form-control" id="InputSalary" aria-describedby="salaryHelp">
+            <form action="hello-servlet" method="GET">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="InputSalary" class="form-label">Salary</label>
+                        <input type="number" class="form-control" id="InputSalary" aria-describedby="salaryHelp">
+                    </div>
+                    <div class="col">
+                        <label for="autoSizingSelect0" class="form-label">Currency</label>
+                        <select class="form-select" id="autoSizingSelect0">
+                            <option selected>Select Currency</option>
+                            <option value="1">SL Rupee(Rs.)</option>
+                            <option value="2">US Dolors($)</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <label for="autoSizingSelect0" class="form-label">Currency</label>
-                    <label class="visually-hidden" for="autoSizingSelect0">Preference</label>
-                    <select class="form-select" id="autoSizingSelect0">
-                        <option selected>Select Currency</option>
-                        <option value="1">SL Rupee(Rs.)</option>
-                        <option value="2">US Dolors($)</option>
-                    </select>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="autoSizingSelect1" class="form-label">For</label>
+                        <select class="form-select" id="autoSizingSelect1">
+                            <option value="1">Month</option>
+                            <option value="2">Year</option>
+                        </select>
+                    </div>
                 </div>
-
-                <div class="col-auto">
-                    <label for="autoSizingSelect1" class="form-label">for</label>
-                    <label class="visually-hidden" for="autoSizingSelect1">for</label>
-                    <select class="form-select" id="autoSizingSelect1">
-                        <option value="1">Month</option>
-                        <option value="2">Year</option>
-                    </select>
-                </div>
-
-                <div class="form-check form-switch mt-3 col-lg-6">
+                <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                    <label class="form-check-label " for="flexSwitchCheckChecked">enable EPF/ETF calculation</label>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Enable EPF/ETF calculation</label>
                 </div>
-
-                <button type="submit" class="btn btn-primary mt-3">calculate</button>
-
+                <button type="submit" class="btn btn-primary">Calculate</button>
             </form>
         </div>
-
-
     </div>
-
-    <p class="mt-4">Tax Brackets and Rates</p>
-
-    <div class="card text-center text-bg-light p-3 mt-3" style="max-width: 600px;">
-        <table class="table">
+    <div class="text-center">
+    <p class="mt-4" style="color: white">Tax Brackets and Rates</p>
+    </div>
+    <div class="card mx-auto" style="max-width: 600px;">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th scope="col">Taxable Income Range (LKR)</th>
@@ -90,7 +113,7 @@
             </thead>
             <tbody>
             <tr>
-                <td>Up to 100,000 </td>
+                <td>Up to 100,000</td>
                 <td>0</td>
             </tr>
             <tr>
@@ -110,7 +133,7 @@
                 <td>24</td>
             </tr>
             <tr>
-                <td>266,667 - 308,333 </td>
+                <td>266,667 - 308,333</td>
                 <td>30</td>
             </tr>
             <tr>
@@ -119,9 +142,9 @@
             </tr>
             </tbody>
         </table>
-
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
