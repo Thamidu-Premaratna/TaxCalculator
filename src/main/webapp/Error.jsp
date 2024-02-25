@@ -25,6 +25,7 @@
 <body>
 <div class="container">
     <h1>Oops! An error occurred.</h1>
+    <p class="text-danger mb-1">${errorMessage}</p>
     <p>We apologize for the inconvenience. Please try again later.</p>
     <p>If you continue to experience issues, please contact support.</p>
 </div>

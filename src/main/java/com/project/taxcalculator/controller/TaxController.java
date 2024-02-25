@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.text.StringEscapeUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,31 +34,42 @@ public class TaxController extends HttpServlet {
         // And initializing it will a default message
         String successMessage = "";
 
+        boolean isEpfEtf = false;
+
         // Get the basic salary input from the user
-        double basicSalary = Double.parseDouble(request.getParameter("salary"));
+        double basicSalary = 0.0;
+        try {
+            // Escape the HTML characters and get the input from the user
+            basicSalary = Double.parseDouble(StringEscapeUtils.escapeHtml4(request.getParameter("salary")));
+            if (basicSalary <= 0 || basicSalary > Double.MAX_VALUE) {
+                errorMessage += "Please enter a valid Salary value (greater than 0 and less than or equal to " + Double.MAX_VALUE + ")!\n";
+            }else if(String.valueOf(basicSalary).matches(String.valueOf(Pattern.compile("[a-zA-Z]")))){
+                errorMessage += "Please enter a valid Salary value (numeric)!\n";
+            }
+        } catch (NumberFormatException e) {
+            errorMessage += "Please enter a valid Salary value!\n";
+        }
+
+        // Escape the HTML characters and get the input from the user
         // Get whether epf/etf calculation is required by the user
-        boolean isEpfEtf = Boolean.parseBoolean(request.getParameter("isepfetf"));
+        String isEpfEtfParam = StringEscapeUtils.escapeHtml4(request.getParameter("isepfetf"));
 
         // Validations for the input
+        if (isEpfEtfParam != null && isEpfEtfParam.equals("on")) {
+            isEpfEtf = true;
+        }
         // Epf and Etf check slider should only provide 1 or 0 as values
-//        if (isEpfEtf) {
-//            errorMessage += "Please select a valid value for the check slider for ETF/EPF calculation";
-//
-//        }
-//        if (basicSalary <= 0) {
-//            errorMessage += "Please enter a valid Salary value (non-zero and non-negative)!";
-//        } else if (String.valueOf(basicSalary).matches(String.valueOf(Pattern.compile("[a-zA-Z]")))) { // Check if non numerics are present
-//            errorMessage += "Please enter a valid Salary value (numeric)!";
-//        }
-        // SQL injection stopping
+        if (isEpfEtf) {
+            errorMessage += "Please select a valid value for the check slider for ETF/EPF calculation\n";
 
-        // HTML sanitation, escaping etc
+        }
 
         // Create Tax service instance to calculate the tax values according to the brackets
         TaxService taxService = new TaxService(basicSalary);
 
         // Get the Tax brackets as a List in order to show them in a tabular format in view dynamically
         List<TaxBracket> taxBrackets = new ArrayList<>();
+        taxBrackets = taxService.getTaxBracketList();
 
         // Setting inital values for the epf and etf
         double employeeEpf = 0.0;
@@ -73,25 +85,41 @@ public class TaxController extends HttpServlet {
             employerEtf = taxService.getEmployerETFContribution();
         }
 
-        // Insert the tax brackets into the database (Table: taxservice) as a record
-        //Using the DAO pattern, insert the tax brackets into the database
-        TaxHistoryDao taxHistoryDao = new TaxHistoryDao();
-        if (taxHistoryDao.insertTaxBrackets(basicSalary, taxService.getTotalTax(), employeeEpf, employerEpf, employerEtf)) {
-            // If the insertion is successful show the success message to the user
-            successMessage = "Tax brackets inserted successfully!";
-            request.setAttribute("successMessage", successMessage);
-            request.setAttribute("taxbrackets", taxBrackets);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        } else {
-            // If the insertion is not successful show the error message to the user
-            errorMessage = "Error occurred while inserting tax brackets!";
-            request.setAttribute("errorMessage", errorMessage);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        }
+        if(errorMessage.equals("")){
+            // Insert the tax brackets into the database (Table: taxservice) as a record
+            //Using the DAO pattern, insert the tax brackets into the database
+            TaxHistoryDao taxHistoryDao = new TaxHistoryDao();
+            try{
+                if (taxHistoryDao.insertTaxBrackets(basicSalary, taxService.getTotalTax(), employeeEpf, employerEpf, employerEtf)) {
+                    // If the insertion is successful show the success message to the user
+                    successMessage = "Tax brackets inserted successfully!\n";
+                    request.setAttribute("successMessage", successMessage);
+                    request.setAttribute("taxbrackets", taxBrackets);
+                    request.setAttribute("totalTax", taxService.getTotalTax());
+                    request.setAttribute("takeHomeSalary", taxService.getTakeHomeSalary());
+                    request.setAttribute("employeeEpf", employeeEpf);
+                    request.setAttribute("employerEpf", employerEpf);
+                    request.setAttribute("employerEtf", employerEtf);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+                    dispatcher.forward(request, response);
+                } else {
+                    // If the insertion is not successful show the error message to the user
+                    errorMessage = "Error occurred while inserting tax brackets!\n";
+                    request.setAttribute("errorMessage", errorMessage);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+                    dispatcher.forward(request, response);
+                }
+            }catch (Exception e){
+                errorMessage = "Server Error ( 500 )!\n";
+                request.setAttribute("errorMessage", errorMessage);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/Error.jsp");
+                dispatcher.forward(request, response);
+            }
 
-        if(!errorMessage.equals("")){
+        }else{
             request.setAttribute("errorMessage", errorMessage);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
         }
     }
 

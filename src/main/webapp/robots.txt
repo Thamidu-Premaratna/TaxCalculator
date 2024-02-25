@@ -1,0 +1,9 @@
+user-agent: *
+
+Allow:/src/main/webapp/index.jsp
+
+Disallow:/src/main/java
+Disallow:/target
+Disallow:/target/.idea
+Disallow:/target/.mvn
+
