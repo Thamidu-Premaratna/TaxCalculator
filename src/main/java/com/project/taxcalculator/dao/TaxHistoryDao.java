@@ -1,6 +1,7 @@
 package com.project.taxcalculator.dao;
 
 import com.project.taxcalculator.model.TaxHistory;
+import com.project.taxcalculator.model.User;
 import com.project.taxcalculator.util.DatabaseConnection;
 
 import java.sql.Connection;
@@ -10,12 +11,9 @@ import java.sql.SQLException;
 
 public class TaxHistoryDao {
     // Insert the tax brackets into the database (Table: taxservice) as a record
-    public boolean insertTaxBrackets(double grossSalary, double taxValue, double employeeEpf, double employerEpf, double employerEtf) throws SQLException, Exception{
+    public boolean insertTaxBrackets(int userId, double grossSalary, double taxValue, double employeeEpf, double employerEpf, double employerEtf) throws SQLException, Exception{
         // Insert the tax brackets into the database
         TaxHistory taxHistory = new TaxHistory(grossSalary, taxValue, employeeEpf, employerEpf, employerEtf);
-
-        //Default user id is 1
-        int userId = 1;
 
         // Using the DAO pattern, insert the tax brackets into the database
         try {
@@ -46,6 +44,23 @@ public class TaxHistoryDao {
         try {
             Connection connection = DatabaseConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM AllTaxHistory");
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException("Error occurred while getting tax brackets!");
+        }catch (Exception e){
+            throw new Exception("Error occurred!");
+        }
+        return resultSet;
+    }
+
+    // Get all the tax brackets for a specific user
+    public ResultSet getTaxBracketsByUserId(int userId) throws SQLException, Exception{
+        // Get the tax brackets from the database
+        ResultSet resultSet = null;
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM taxhistory WHERE userId = ?");
+            preparedStatement.setInt(1, userId);
             resultSet = preparedStatement.executeQuery();
         } catch (SQLException e) {
             throw new SQLException("Error occurred while getting tax brackets!");

@@ -6,14 +6,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-with,initial-scale=1">
-    <meta name="description" content="This web application helps you to calculate your tax when you enter your gross salary as input. Includes the EPF/ ETF deductions also">
+    <meta name="description"
+          content="This web application helps you to calculate your tax when you enter your gross salary as input. Includes the EPF/ ETF deductions also">
     <meta name="googlebot" content="index,follow">
-    <meta name="keywords" content="tax calculator, tax calculator sl,tax calculator sri lanka, tax, tax deduction, epf, etf, employee provident fund, employees trust fund, salary, gross salary, income,tax calculator2024, srilanka, Sri Lanka, lanka, srilanka economy, SL, SL economy, ceylon, colombo, job, business, employee, employment, tin, taxpayer identification number, inflation, adayam badhu, gotago gama">
-    <meta name="author" content="Faculty of Science, University of Kelaniya">  
-    
+    <meta name="keywords"
+          content="tax calculator, tax calculator sl,tax calculator sri lanka, tax, tax deduction, epf, etf, employee provident fund, employees trust fund, salary, gross salary, income,tax calculator2024, srilanka, Sri Lanka, lanka, srilanka economy, SL, SL economy, ceylon, colombo, job, business, employee, employment, tin, taxpayer identification number, inflation, adayam badhu, gotago gama">
+    <meta name="author" content="Faculty of Science, University of Kelaniya">
+
     <title>Tax Calculator Web Service</title>
     <link rel="stylesheet" type="text/css" href="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.css">
-  
+
 </head>
 <body>
 <nav class="navbar bg-body-tertiary mt-3 mb-3">
@@ -23,45 +25,58 @@
                  class="d-inline-block align-text-top">
             Tax Calculator Web Application
         </a>
+<%--        Check if Session variables exist for User, if exist then use it otherwise show login link --%>
+
         <div class="d-flex">
-            <a href="login.jsp" class="btn btn-custom">Sign In</a>
-            <a href="register.jsp" class="btn btn-custom">Sign Up</a>
+            <c:choose>
+                <c:when test="${empty sessionScope.loggedInUser}">
+                    <a href="login.jsp" class="btn btn-custom">Sign In</a>
+                    <a href="register.jsp" class="btn btn-custom">Sign Up</a>
+                </c:when>
+                <c:otherwise>
+                    <span class="navbar-text">
+                        Welcome, ${sessionScope.loggedInUser.firstname}
+                    </span>
+                    <a href="register.jsp" class="btn btn-custom">Sign Up</a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </nav>
 
 <div class="container mt-5">
     <div class="text-center">
-        <p style="color: white">This is a web application for calculating your tax payment based on your income. Enjoy it!</p>
+        <p style="color: white">This is a web application for calculating your tax payment based on your income. Enjoy
+            it!</p>
     </div>
-
-    <<div class="card mx-auto" style="max-width: 600px;">
+    <div class="card mx-auto" style="max-width: 600px;">
         <div class="card-header">
             <h5 class="card-title">Income Tax Calculator</h5>
         </div>
         <div class="card-body">
-            <form class="row gy-2 gx-3 align-items-center" action="tax-servlet" method="GET">
-                <div class="col-auto">
+            <form class="row gy-2 gx-3 align-items-center" action="tax-servlet" method="POST">
+                <div class="col-12">
                     <label for="InputSalary" class="form-label">Salary</label>
                     <input name="salary" type="number" class="form-control" id="InputSalary"
                            aria-describedby="salaryHelp">
                 </div>
-
-                <div class="form-check form-switch mt-3 col-lg-6">
+                <div class="form-check form-switch my-3 col-12">
                     <input name="isepfetf" class="form-check-input" type="checkbox" role="switch"
                            id="flexSwitchCheckChecked">
-                    <label class="form-check-label " for="flexSwitchCheckChecked">enable EPF/ETF calculation</label>
+                    <label class="form-check-label " for="flexSwitchCheckChecked">Enable EPF/ETF calculation</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Calculate</button>
             </form>
         </div>
     </div>
-    <p class="mt-4">Tax Brackets and Rates and EPF/ETF calculations</p>
-    <p class="my-1 text-danger">${errorMessage}</p>
-    <p class="my-1 text-success">${successMessage}</p>
-
-    <div class="card text-center text-bg-light p-3 mt-3" style="max-width: 600px;">
-        <h5 class="card-title">EPF/ETF Calculation Results</h5>
+    <div class="text-center">
+        <p class="my-1 text-danger">${errorMessage}</p>
+        <p class="my-1 text-success">${successMessage}</p>
+    </div>
+    <div class="card mx-auto text-center text-bg-light p-3 mt-3" style="max-width: 600px;">
+        <div class="card-header">
+            <h5 class="card-title">EPF/ETF Calculations</h5>
+        </div>
         <table class="table mb-1">
             <thead>
             <tr>
@@ -89,8 +104,10 @@
             </tbody>
         </table>
     </div>
-    <div class="card text-center text-bg-light p-3 mt-3" style="max-width: 600px;">
-        <h5 class="card-title">Tax Calculation Results</h5>
+    <div class="card mx-auto text-center text-bg-light p-3 mt-3" style="max-width: 600px;">
+        <div class="card-header">
+            <h5 class="card-title">Tax Calculations</h5>
+        </div>
         <table class="table">
             <thead>
             <tr>
