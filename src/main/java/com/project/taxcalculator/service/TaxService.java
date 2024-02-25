@@ -20,8 +20,11 @@ public class TaxService {
     private double basicSalary;
     private List<TaxBracket> taxBrackets;
 
+    private double takeHomeSalary = 0.0;
+
     public TaxService(double basicSalary) {
         this.basicSalary = basicSalary;
+        this.takeHomeSalary = basicSalary;
         // Initialize the tax brackets
         initTaxBrackets();
     }
@@ -73,6 +76,8 @@ public class TaxService {
                         formatBracketRange(upperLimit), taxRate, tax
                 ));
             }
+            // Calculate the take home salary
+            takeHomeSalary = basicSalary - getTotalTax();
         }else {
             // The salary is less than 100000
             taxBrackets.add(new TaxBracket(
@@ -97,7 +102,7 @@ public class TaxService {
 
     // Get the take home salary
     public double getTakeHomeSalary() {
-        return basicSalary - getTotalTax();
+        return this.takeHomeSalary;
     }
 
     // Print the tax brackets and total tax
@@ -131,20 +136,17 @@ public class TaxService {
     double employerETFContribution = 0.0;
 
     public void calculateEPFandETF() {
-        double totalEPF = 0.0;
-        double totalETF = 0.0;
 
         // Calculate employee EPF contribution
         employeeEPFContribution = this.basicSalary * employeeEPF;
-        totalEPF += employeeEPFContribution;
+        // Deduct employee EPF contribution from the take home salary (EPF is a deduction from the salary)
+        this.takeHomeSalary -= employeeEPFContribution;
 
         // Calculate employer EPF contribution
         employerEPFContribution = this.basicSalary * employerEPF;
-        totalEPF += employerEPFContribution;
 
         // Calculate employer ETF contribution
         employerETFContribution = this.basicSalary * employerETF;
-        totalETF += employerETFContribution;
     }
 
     public double getEmployeeEPFContribution() {

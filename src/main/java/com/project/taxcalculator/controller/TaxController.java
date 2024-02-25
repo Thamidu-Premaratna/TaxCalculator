@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.text.StringEscapeUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,27 +37,30 @@ public class TaxController extends HttpServlet {
         boolean isEpfEtf = false;
 
         // Get the basic salary input from the user
-        double basicSalary = Double.parseDouble(request.getParameter("salary"));
+        double basicSalary = 0.0;
+        try {
+            // Escape the HTML characters and get the input from the user
+            basicSalary = Double.parseDouble(StringEscapeUtils.escapeHtml4(request.getParameter("salary")));
+            if (basicSalary <= 0 || basicSalary > Double.MAX_VALUE) {
+                errorMessage += "Please enter a valid Salary value (greater than 0 and less than or equal to " + Double.MAX_VALUE + ")!\n";
+            }
+        } catch (NumberFormatException e) {
+            errorMessage += "Please enter a valid Salary value (numeric)!\n";
+        }
+
+        // Escape the HTML characters and get the input from the user
         // Get whether epf/etf calculation is required by the user
-        String isEpfEtfParam = request.getParameter("isepfetf");
+        String isEpfEtfParam = StringEscapeUtils.escapeHtml4(request.getParameter("isepfetf"));
+
+        // Validations for the input
         if (isEpfEtfParam != null && isEpfEtfParam.equals("on")) {
             isEpfEtf = true;
         }
-
-        // Validations for the input
         // Epf and Etf check slider should only provide 1 or 0 as values
-//        if (isEpfEtf) {
-//            errorMessage += "Please select a valid value for the check slider for ETF/EPF calculation";
-//
-//        }
-//        if (basicSalary <= 0) {
-//            errorMessage += "Please enter a valid Salary value (non-zero and non-negative)!";
-//        } else if (String.valueOf(basicSalary).matches(String.valueOf(Pattern.compile("[a-zA-Z]")))) { // Check if non numerics are present
-//            errorMessage += "Please enter a valid Salary value (numeric)!";
-//        }
-        // SQL injection stopping
+        if (isEpfEtf) {
+            errorMessage += "Please select a valid value for the check slider for ETF/EPF calculation\n";
 
-        // HTML sanitation, escaping etc
+        }
 
         // Create Tax service instance to calculate the tax values according to the brackets
         TaxService taxService = new TaxService(basicSalary);
@@ -72,7 +76,6 @@ public class TaxController extends HttpServlet {
 
         // If the user has selected to calculate the epf and etf
         if (isEpfEtf) {
-            System.out.println("EPF and ETF calculation is available!");
             // Calculate the EPF and ETF
             taxService.calculateEPFandETF();
             employeeEpf = taxService.getEmployeeEPFContribution();
@@ -85,8 +88,7 @@ public class TaxController extends HttpServlet {
         TaxHistoryDao taxHistoryDao = new TaxHistoryDao();
         if (taxHistoryDao.insertTaxBrackets(basicSalary, taxService.getTotalTax(), employeeEpf, employerEpf, employerEtf)) {
             // If the insertion is successful show the success message to the user
-            System.out.println("Tax brackets inserted successfully!");
-            successMessage = "Tax brackets inserted successfully!";
+            successMessage = "Tax brackets inserted successfully!\n";
             request.setAttribute("successMessage", successMessage);
             request.setAttribute("taxbrackets", taxBrackets);
             request.setAttribute("totalTax", taxService.getTotalTax());
@@ -98,7 +100,7 @@ public class TaxController extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             // If the insertion is not successful show the error message to the user
-            errorMessage = "Error occurred while inserting tax brackets!";
+            errorMessage = "Error occurred while inserting tax brackets!\n";
             request.setAttribute("errorMessage", errorMessage);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
