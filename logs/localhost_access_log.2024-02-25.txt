@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:07:02 +0530] "GET /TaxCalculator HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:07:04 +0530] "GET /TaxCalculator/ HTTP/1.1" 200 181
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:07:04 +0530] "GET /favicon.ico HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:07:08 +0530] "GET /TaxCalculator/hello-servlet HTTP/1.1" 404 783
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:30:49 +0530] "GET /TaxCalculator HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:30:51 +0530] "GET /TaxCalculator/ HTTP/1.1" 200 181
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:30:52 +0530] "GET /TaxCalculator/hello-servlet HTTP/1.1" 404 783
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:45:19 +0530] "GET /TaxCalculator HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:45:21 +0530] "GET /TaxCalculator/ HTTP/1.1" 200 181
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:45:50 +0530] "GET /TaxCalculator/ HTTP/1.1" 200 177
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:16:45:51 +0530] "GET /TaxCalculator/login.jsp HTTP/1.1" 200 2300
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:17:06:38 +0530] "GET /WebApplication HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:17:07:59 +0530] "GET /WebApplication HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [25/Feb/2024:19:15:38 +0530] "GET /TaxCalculator/login.jsp HTTP/1.1" 404 683
