@@ -6,10 +6,11 @@ import com.project.taxcalculator.util.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class TaxHistoryDao {
     // Insert the tax brackets into the database (Table: taxservice) as a record
-    public boolean insertTaxBrackets(double grossSalary, double taxValue, double employeeEpf, double employerEpf, double employerEtf) {
+    public boolean insertTaxBrackets(double grossSalary, double taxValue, double employeeEpf, double employerEpf, double employerEtf) throws SQLException, Exception{
         // Insert the tax brackets into the database
         TaxHistory taxHistory = new TaxHistory(grossSalary, taxValue, employeeEpf, employerEpf, employerEtf);
 
@@ -30,23 +31,26 @@ public class TaxHistoryDao {
             if (value > 0) {
                 return true;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+        } catch (SQLException e) {
+            throw new SQLException("Error occurred while inserting tax brackets!" );
+        }catch (Exception e){
+            throw new Exception("Error occurred!");
         }
         return false;
     }
 
     // Get the Tax brackets as a List in order to show them in a tabular format in view dynamically
-    public ResultSet getTaxBrackets() {
+    public ResultSet getTaxBrackets() throws SQLException, Exception{
         // Get the tax brackets from the database
         ResultSet resultSet = null;
         try {
             Connection connection = DatabaseConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM AllTaxHistory");
             resultSet = preparedStatement.executeQuery();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new SQLException("Error occurred while getting tax brackets!");
+        }catch (Exception e){
+            throw new Exception("Error occurred!");
         }
         return resultSet;
     }
