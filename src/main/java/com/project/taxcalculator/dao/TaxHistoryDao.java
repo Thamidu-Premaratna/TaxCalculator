@@ -19,7 +19,7 @@ public class TaxHistoryDao {
         // Using the DAO pattern, insert the tax brackets into the database
         try {
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxservice (grosssalary, taxvalue, userId, employee_epf,employer_epf, employer_etf) VALUES (?, ?, ?, ?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO taxhistory (grosssalary, taxvalue, userId, employee_epf,employer_epf, employer_etf) VALUES (?, ?, ?, ?,?,?)");
             preparedStatement.setDouble(1, taxHistory.getGrosssalary());
             preparedStatement.setDouble(2, taxHistory.getTaxvalue());
             preparedStatement.setInt(3, userId);
