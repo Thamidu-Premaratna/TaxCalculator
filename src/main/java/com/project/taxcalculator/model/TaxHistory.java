@@ -1,44 +1,57 @@
 package com.project.taxcalculator.model;
 
 public class TaxHistory {
-    private Double grosssalary;
-    private Double taxvalue;
-    private Double epf;
-    private Double  etf;
+    private double grosssalary;
+    private double taxvalue;
+    private double employeeEpf;
+    private double  employerEpf;
+    private double  employerEtf;
 
-    public TaxHistory() {
-
+    public TaxHistory(double grosssalary, double taxvalue, double employeeEpf, double employerEpf, double employerEtf) {
+        this.grosssalary = grosssalary;
+        this.taxvalue = taxvalue;
+        this.employeeEpf = employeeEpf;
+        this.employerEpf = employerEpf;
+        this.employerEtf = employerEtf;
     }
 
-    public Double getGrosssalary() {
+    public double getGrosssalary() {
         return grosssalary;
     }
 
-    public void setGrosssalary(Double grosssalary) {
+    public void setGrosssalary(double grosssalary) {
         this.grosssalary = grosssalary;
     }
 
-    public Double getTaxvalue() {
+    public double getTaxvalue() {
         return taxvalue;
     }
 
-    public void setTaxvalue(Double taxvalue) {
+    public void setTaxvalue(double taxvalue) {
         this.taxvalue = taxvalue;
     }
 
-    public Double getEpf() {
-        return epf;
+    public double getEmployeeEpf() {
+        return employeeEpf;
     }
 
-    public void setEpf(Double epf) {
-        this.epf = epf;
+    public void setEmployeeEpf(double employeeEpf) {
+        this.employeeEpf = employeeEpf;
     }
 
-    public Double getEtf() {
-        return etf;
+    public double getEmployerEpf() {
+        return employerEpf;
     }
 
-    public void setEtf(Double etf) {
-        this.etf = etf;
+    public void setEmployerEpf(double employerEpf) {
+        this.employerEpf = employerEpf;
+    }
+
+    public double getEmployerEtf() {
+        return employerEtf;
+    }
+
+    public void setEmployerEtf(double employerEtf) {
+        this.employerEtf = employerEtf;
     }
 }
