@@ -29,7 +29,7 @@
 
         <div class="d-flex">
             <c:choose>
-                <c:when test="${empty sessionScope.user}">
+                <c:when test="${empty sessionScope.loggedInUser}">
                     <a href="login.jsp" class="btn btn-custom">Sign In</a>
                     <a href="register.jsp" class="btn btn-custom">Sign Up</a>
                 </c:when>

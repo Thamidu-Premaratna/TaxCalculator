@@ -36,8 +36,6 @@ public class TaxController extends HttpServlet {
         // And initializing it will a default message
         String successMessage = "";
 
-        boolean isEpfEtf = false;
-
         // Store the user id from the session if a user is logged in
         User user = (User) request.getSession().getAttribute("loggedInUser");
         int userId = 1; // Default user id is 1 (admin)
@@ -61,14 +59,16 @@ public class TaxController extends HttpServlet {
 
         // Escape the HTML characters and get the input from the user
         // Get whether epf/etf calculation is required by the user
-        String isEpfEtfParam = StringEscapeUtils.escapeHtml4(request.getParameter("isepfetf"));
 
+        boolean isEpfEtf = false;
+
+        String isEpfEtfParam = StringEscapeUtils.escapeHtml4(request.getParameter("isepfetf"));
         // Validations for the input
         if (isEpfEtfParam != null && isEpfEtfParam.equals("on")) {
             isEpfEtf = true;
         }
         // Epf and Etf check slider should only provide 1 or 0 as values
-        if (isEpfEtf) {
+        if (!isEpfEtf) {
             errorMessage += "Please select a valid value for the check slider for ETF/EPF calculation\n";
 
         }
