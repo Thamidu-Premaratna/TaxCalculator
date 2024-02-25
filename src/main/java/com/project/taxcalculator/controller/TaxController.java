@@ -23,8 +23,9 @@ public class TaxController extends HttpServlet {
     public void init() {
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
+        response.setHeader("Content-Security-Policy", "script-src 'self'");
 
         // Get the error message that will be shown to user in case of errors.
         // And initializing it will a default message
@@ -112,7 +113,7 @@ public class TaxController extends HttpServlet {
             }catch (Exception e){
                 errorMessage = "Server Error ( 500 )!\n";
                 request.setAttribute("errorMessage", errorMessage);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/Error.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
                 dispatcher.forward(request, response);
             }
 

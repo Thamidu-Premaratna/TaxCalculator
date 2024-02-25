@@ -40,7 +40,7 @@
             <h5 class="card-title">Income Tax Calculator</h5>
         </div>
         <div class="card-body">
-            <form class="row gy-2 gx-3 align-items-center" action="tax-servlet" method="GET">
+            <form class="row gy-2 gx-3 align-items-center" action="tax-servlet" method="POST">
                 <div class="col-auto">
                     <label for="InputSalary" class="form-label">Salary</label>
                     <input name="salary" type="number" class="form-control" id="InputSalary"

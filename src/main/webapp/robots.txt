@@ -1,9 +1,12 @@
 user-agent: *
 
 Allow:/src/main/webapp/index.jsp
+Allow:/src/main/webapp/login.jsp
+Allow:/src/main/webapp/register.jsp
 
 Disallow:/src/main/java
 Disallow:/target
 Disallow:/target/.idea
 Disallow:/target/.mvn
+Disallow:/src/main/webapp/error.jsp
 
