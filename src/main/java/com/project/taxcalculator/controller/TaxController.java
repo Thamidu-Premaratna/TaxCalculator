@@ -33,10 +33,15 @@ public class TaxController extends HttpServlet {
         // And initializing it will a default message
         String successMessage = "";
 
+        boolean isEpfEtf = false;
+
         // Get the basic salary input from the user
         double basicSalary = Double.parseDouble(request.getParameter("salary"));
         // Get whether epf/etf calculation is required by the user
-        boolean isEpfEtf = Boolean.parseBoolean(request.getParameter("isepfetf"));
+        String isEpfEtfParam = request.getParameter("isepfetf");
+        if (isEpfEtfParam != null && isEpfEtfParam.equals("on")) {
+            isEpfEtf = true;
+        }
 
         // Validations for the input
         // Epf and Etf check slider should only provide 1 or 0 as values
@@ -67,6 +72,7 @@ public class TaxController extends HttpServlet {
 
         // If the user has selected to calculate the epf and etf
         if (isEpfEtf) {
+            System.out.println("EPF and ETF calculation is available!");
             // Calculate the EPF and ETF
             taxService.calculateEPFandETF();
             employeeEpf = taxService.getEmployeeEPFContribution();
@@ -79,6 +85,7 @@ public class TaxController extends HttpServlet {
         TaxHistoryDao taxHistoryDao = new TaxHistoryDao();
         if (taxHistoryDao.insertTaxBrackets(basicSalary, taxService.getTotalTax(), employeeEpf, employerEpf, employerEtf)) {
             // If the insertion is successful show the success message to the user
+            System.out.println("Tax brackets inserted successfully!");
             successMessage = "Tax brackets inserted successfully!";
             request.setAttribute("successMessage", successMessage);
             request.setAttribute("taxbrackets", taxBrackets);
@@ -88,16 +95,19 @@ public class TaxController extends HttpServlet {
             request.setAttribute("employerEpf", employerEpf);
             request.setAttribute("employerEtf", employerEtf);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
         } else {
             // If the insertion is not successful show the error message to the user
             errorMessage = "Error occurred while inserting tax brackets!";
             request.setAttribute("errorMessage", errorMessage);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
         }
 
         if(!errorMessage.equals("")){
             request.setAttribute("errorMessage", errorMessage);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
         }
     }
 
