@@ -1,18 +1,6 @@
-<%--<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JSP - Hello World</title>
-</head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>--%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,32 +29,14 @@
 
         <div class="card-body">
 
-            <form class="row gy-2 gx-3 align-items-center" action="hello-servlet" method="GET">
+            <form class="row gy-2 gx-3 align-items-center" action="tax-servlet" method="GET">
                 <div class="col-auto">
                     <label for="InputSalary" class="form-label">Salary</label>
-                    <input type="number" class="form-control" id="InputSalary" aria-describedby="salaryHelp">
-                </div>
-                <div class="col-auto">
-                    <label for="autoSizingSelect0" class="form-label">Currency</label>
-                    <label class="visually-hidden" for="autoSizingSelect0">Preference</label>
-                    <select class="form-select" id="autoSizingSelect0">
-                        <option selected>Select Currency</option>
-                        <option value="1">SL Rupee(Rs.)</option>
-                        <option value="2">US Dolors($)</option>
-                    </select>
-                </div>
-
-                <div class="col-auto">
-                    <label for="autoSizingSelect1" class="form-label">for</label>
-                    <label class="visually-hidden" for="autoSizingSelect1">for</label>
-                    <select class="form-select" id="autoSizingSelect1">
-                        <option value="1">Month</option>
-                        <option value="2">Year</option>
-                    </select>
+                    <input name="salary" type="number" class="form-control" id="InputSalary" aria-describedby="salaryHelp">
                 </div>
 
                 <div class="form-check form-switch mt-3 col-lg-6">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+                    <input name="isepfetf" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
                     <label class="form-check-label " for="flexSwitchCheckChecked">enable EPF/ETF calculation</label>
                 </div>
 
@@ -79,44 +49,36 @@
     </div>
 
     <p class="mt-4">Tax Brackets and Rates</p>
+    <p class="my-1 text-danger">${errorMessage}</p>
+    <p class="my-1 text-success">${successMessage}</p>
 
     <div class="card text-center text-bg-light p-3 mt-3" style="max-width: 600px;">
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">Taxable Income Range (LKR)</th>
-                <th scope="col">Tax Rate (%)</th>
+                <th scope="col">Tax Rate</th>
+                <th scope="col">Tax (LKR)</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Up to 100,000 </td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>100,000 - 141,667</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>141,667 - 183,333</td>
-                <td>12</td>
-            </tr>
-            <tr>
-                <td>183,333 - 225,000</td>
-                <td>18</td>
-            </tr>
-            <tr>
-                <td>225,000 - 266,667</td>
-                <td>24</td>
-            </tr>
-            <tr>
-                <td>266,667 - 308,333 </td>
-                <td>30</td>
-            </tr>
-            <tr>
-                <td>Above 308,333</td>
-                <td>36</td>
-            </tr>
+            <c:forEach var="taxBracket" items="${taxbrackets}">
+                <tr>
+                    <td>${taxBracket.bracketSalaryRange}</td>
+                    <td>${taxBracket.taxRate}</td>
+                    <td>${taxBracket.tax}</td>
+                </tr>
+            </c:forEach>
+                <tr>
+                    <td></td>
+                    <td>Total Tax</td>
+                    <td>${totalTax}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Take Home Salary</td>
+                    <td>${takeHomeSalary}</td>
+                </tr>
             </tbody>
         </table>
 
