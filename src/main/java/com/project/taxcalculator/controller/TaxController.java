@@ -82,6 +82,11 @@ public class TaxController extends HttpServlet {
             successMessage = "Tax brackets inserted successfully!";
             request.setAttribute("successMessage", successMessage);
             request.setAttribute("taxbrackets", taxBrackets);
+            request.setAttribute("totalTax", taxService.getTotalTax());
+            request.setAttribute("takeHomeSalary", taxService.getTakeHomeSalary());
+            request.setAttribute("employeeEpf", employeeEpf);
+            request.setAttribute("employerEpf", employerEpf);
+            request.setAttribute("employerEtf", employerEtf);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         } else {
             // If the insertion is not successful show the error message to the user

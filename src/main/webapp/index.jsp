@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +56,8 @@
             <thead>
             <tr>
                 <th scope="col">Taxable Income Range (LKR)</th>
-                <th scope="col">Tax Rate (%)</th>
+                <th scope="col">Tax Rate</th>
+                <th scope="col">Tax (LKR)</th>
             </tr>
             </thead>
             <tbody>
@@ -67,6 +68,16 @@
                     <td>${taxBracket.tax}</td>
                 </tr>
             </c:forEach>
+                <tr>
+                    <td></td>
+                    <td>Total Tax</td>
+                    <td>${totalTax}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Take Home Salary</td>
+                    <td>${takeHomeSalary}</td>
+                </tr>
             </tbody>
         </table>
 
