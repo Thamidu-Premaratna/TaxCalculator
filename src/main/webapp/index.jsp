@@ -16,8 +16,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-with,initial-scale=1">
+    <meta name="description" content="This web application helps you to calculate your tax when you enter your gross salary as input. Includes the EPF/ ETF deductions also">
+    <meta name="googlebot" content="index,follow">
+    <meta name="keywords" content="tax calculator, tax calculator sl,tax calculator sri lanka, tax, tax deduction, epf, etf, employee provident fund, employees trust fund, salary, gross salary, income,tax calculator2024, srilanka, Sri Lanka, lanka, srilanka economy, SL, SL economy, ceylon, colombo, job, business, employee, employment, tin, taxpayer identification number, inflation, adayam badhu, gotago gama">
+
     <link rel="stylesheet" type="text/css" href="bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.css">
-    <title>Tax Calculator Web Service</title>
+    <title>Tax Calculator</title>
 </head>
 <body >
 
