@@ -20,7 +20,7 @@
 <body>
 <nav class="navbar bg-body-tertiary mt-3 mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.jsp">
             <img src="19198919.jpg" alt="Tax-Calculator-Web-Application-Logo" width="30" height="24"
                  class="d-inline-block align-text-top">
             Tax Calculator Web Application
@@ -37,7 +37,7 @@
                     <span class="navbar-text">
                         Welcome, ${sessionScope.loggedInUser.firstname}
                     </span>
-                    <a href="register.jsp" class="btn btn-custom">Sign Up</a>
+                    <a href="${pageContext.request.contextPath}/taxhistory-servlet?userid=${sessionScope.loggedInUser.id}" class="btn btn-custom">Tax History</a>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -49,7 +49,7 @@
         <p style="color: white">This is a web application for calculating your tax payment based on your income. Enjoy
             it!</p>
     </div>
-    <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card mx-auto" style="max-width: 1024px;">
         <div class="card-header">
             <h5 class="card-title">Income Tax Calculator</h5>
         </div>
@@ -73,7 +73,7 @@
         <p class="my-1 text-danger">${errorMessage}</p>
         <p class="my-1 text-success">${successMessage}</p>
     </div>
-    <div class="card mx-auto text-center text-bg-light p-3 mt-3" style="max-width: 600px;">
+    <div class="card mx-auto text-center text-bg-light p-3 mt-3" style="max-width: 1024px;">
         <div class="card-header">
             <h5 class="card-title">EPF/ETF Calculations</h5>
         </div>
@@ -104,7 +104,7 @@
             </tbody>
         </table>
     </div>
-    <div class="card mx-auto text-center text-bg-light p-3 mt-3" style="max-width: 600px;">
+    <div class="card mx-auto text-center text-bg-light p-3 mt-3" style="max-width: 1024px;">
         <div class="card-header">
             <h5 class="card-title">Tax Calculations</h5>
         </div>

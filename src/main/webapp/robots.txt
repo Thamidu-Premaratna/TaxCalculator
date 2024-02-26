@@ -3,6 +3,7 @@ user-agent: *
 Allow:/src/main/webapp/index.jsp
 Allow:/src/main/webapp/login.jsp
 Allow:/src/main/webapp/register.jsp
+Allow:/src/main/webapp/taxhistory.jsp
 
 Disallow:/src/main/java
 Disallow:/target
