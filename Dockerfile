@@ -17,7 +17,7 @@ COPY src ./src
 RUN mvn package
 
 # Use Tomcat image to deploy the .war
-FROM tomcat:10.1.17-jdk11-openjdk
+FROM tomcat:latest
 
 # Remove the default Tomcat applications
 RUN rm -rf /usr/local/tomcat/webapps/*
