@@ -1,5 +1,5 @@
 # Use an official maven image as a parent image
-FROM maven:3.8.4-openjdk-11 as build
+FROM maven:3.8.1-openjdk-11 as build
 
 # Set the working directory in the image to /app
 WORKDIR /app
