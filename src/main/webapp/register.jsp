@@ -28,7 +28,8 @@
         }
 
         .card {
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for better readability */
+            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background for better readability */
+            color: #fff; /* Set text color to white */
         }
 
         .card-footer {
@@ -48,8 +49,8 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">Register</div>
-                <div class="card-body">
+                <div class="card-header text-white">Register</div>
+                <div class="card-body text-white">
                     <form action="register-servlet" method="post">
                         <div class="mb-3">
                             <p class="text-danger">${errorMessage}</p>
@@ -76,11 +77,11 @@
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Register</button>
+                            <button type="submit" class="btn btn-primary text-white">Register</button>
                         </div>
                     </form>
                 </div>
-                <div class="card-footer text-muted">
+                <div class="card-footer text-white">
                     Already have an account? <a href="login.jsp">Login</a>
                 </div>
             </div>
